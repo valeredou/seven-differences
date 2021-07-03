@@ -4,6 +4,7 @@ import { A11yUserPreferences } from '@react-three/a11y'
 import useStore from '@/helpers/store'
 
 const LCanvas = ({ children }) => {
+  console.log("je passe dans le rendu du canvas")
   const dom = useStore((state) => state.dom)
   return (
     <Canvas

@@ -46,6 +46,8 @@ const ForwardPropsToR3fComponent = ({ comp, pageProps }) => {
 }
 
 function App({ Component, pageProps = {} }) {
+
+  
   const router = useRouter()
   useEffect(() => {
     useStore.setState({ router })
