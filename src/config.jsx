@@ -1,9 +1,9 @@
 import Head from 'next/head'
 
-const titleDefault = 'React Three Next Starter'
+const titleDefault = 'Seven Differences'
 const url = 'https://react-three-next.vercel.app/'
-const description = 'The easiest and fastest way to create a 3D website using React Three Fiber and NextJS'
-const author = 'Author'
+const description = 'First 3D seven differences game '
+const author = 'Valère Douillé'
 
 export default function Header({ title = titleDefault }) {
   return (
@@ -21,7 +21,7 @@ export default function Header({ title = titleDefault }) {
       <meta name='description' content={description} />
       <meta
         name='keywords'
-        content='Software Engineer,Product Manager,Project Manager,Data Scientist,Computer Scientist'
+        content='seven,seven differences,differences,game,threejs,nextjs,pmndrs'
       />
       <meta name='robots' content='index,follow' />
       <meta name='distribution' content='web' />
@@ -42,6 +42,7 @@ export default function Header({ title = titleDefault }) {
       <link rel='manifest' href='/manifest.json' />
       <link rel='mask-icon' color='#000000' href='/icons/safari-pinned-tab.svg' />
       <link rel='apple-touch-startup-image' href='/startup.png' />
+     
 
       {/* Meta Tags for HTML pages on Mobile */}
       {/* <meta name="format-detection" content="telephone=yes"/>
@@ -55,7 +56,7 @@ export default function Header({ title = titleDefault }) {
         documentation: https://dev.twitter.com/cards/getting-started
         Be sure validate your Twitter card markup on the documentation site. */}
       <meta name='twitter:card' content='summary' />
-      <meta name='twitter:site' content='@onirenaud' />
+      <meta name='twitter:site' content='@valere-dou' />
     </Head>
   )
 }

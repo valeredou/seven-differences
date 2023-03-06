@@ -1,0 +1,30 @@
+button.button{
+  
+  border: none;
+  padding: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding : 20px 30px;
+  border-radius: 5px;
+  font-size: 1.5em;
+  cursor: pointer;
+
+  &.primary{
+    color: $color-background;
+    background: $color-primary;
+    &:hover{
+      background: darken($color: $color-primary, $amount: 10);
+    }
+  }
+
+  &.secondary{
+    color: $color-background;
+    background: $color-secondary;
+    &:hover{
+      background: darken($color: $color-secondary, $amount: 10);
+    }
+  }
+
+}
