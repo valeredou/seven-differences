@@ -11,6 +11,43 @@
 .home-container h1 {
   color: #F1FAEE;
 }
+.home-container .play-button {
+  transition: all 0.2s;
+}
+.home-container .play-button:hover {
+  border: 2px solid #E63946;
+  transform: scale(1.2);
+}
+
+.play-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #1D3557;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+}
+.play-container .separation {
+  height: 100%;
+  width: 5px;
+  background: #A8DADC;
+}
+.play-container .scene {
+  min-width: 300px;
+}
+.play-container .back {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: #F1FAEE;
+  font-size: 1.5em;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.play-container .back:hover {
+  transform: scale(1.2);
+}
 
 button.button {
   border: none;

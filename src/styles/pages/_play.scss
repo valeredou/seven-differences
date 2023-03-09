@@ -1,0 +1,32 @@
+.play-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: $color-primary;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+
+  .separation {
+    height: 100%;
+    width: 5px;
+    background: $color-primary-lightest;
+  }
+
+  .scene {
+    min-width: 300px;
+  }
+
+  .back {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: $color-background;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: all 0.2s;
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+}

@@ -1,6 +1,7 @@
 import dynamic from 'next/dynamic'
 import Instructions from '@/components/dom/Instructions'
 import Button from '@/components/button'
+import { useRouter } from 'next/router'
 
 // Dynamic import is used to prevent a payload when the website starts, that includes threejs, r3f etc..
 // WARNING ! errors might get obfuscated by using dynamic import.
@@ -10,10 +11,19 @@ import Button from '@/components/button'
 
 // Dom components go here
 export default function Home(props) {
+  const router = useRouter()
   return (
     <div className='home-container'>
       <h1>SEVEN DIFFERENCES</h1>
-      <Button type="button" className="secondary">PLAY</Button>
+      <Button
+        type='button'
+        className='secondary play-button'
+        onClick={() => {
+          console.log('toto')
+          router.push('/play')
+        }}>
+        PLAY
+      </Button>
     </div>
   )
 }
