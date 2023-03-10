@@ -2,6 +2,7 @@ import dynamic from 'next/dynamic'
 import Instructions from '@/components/dom/Instructions'
 import Button from '@/components/button'
 import { useRouter } from 'next/router'
+import { motion } from 'framer-motion'
 
 // Dynamic import is used to prevent a payload when the website starts, that includes threejs, r3f etc..
 // WARNING ! errors might get obfuscated by using dynamic import.
@@ -14,14 +15,33 @@ export default function Home(props) {
   const router = useRouter()
   return (
     <div className='home-container'>
-      <h1>SEVEN DIFFERENCES</h1>
+      <motion.h1
+        initial='initialState'
+        animate='animateState'
+        exit='exitState'
+        variants={{
+          initialState: { opacity: 0.2, y: 30 },
+          animateState: { opacity: 1, y: 0 },
+          exitState: { y: 50 },
+        }}
+        transition={{ duration: 0.75 }}>
+        SEVEN DIFFERENCES
+      </motion.h1>
       <Button
         type='button'
         className='secondary play-button'
         onClick={() => {
-          console.log('toto')
           router.push('/play')
-        }}>
+        }}
+        initial='initialState'
+        animate='animateState'
+        exit='exitState'
+        variants={{
+          initialState: { opacity: 0.2, y: -30 },
+          animateState: { opacity: 1, y: 0 },
+          exitState: { y: -50 },
+        }}
+        transition={{ duration: 0.75 }}>
         PLAY
       </Button>
     </div>

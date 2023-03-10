@@ -1,8 +1,10 @@
+import { motion } from 'framer-motion'
+
 const Button = ({ children, ...props }) => {
   return (
-    <button className={'button ' + props.className} onClick={props.onClick}>
+    <motion.button {...props} className={'button ' + props.className} onClick={props.onClick}>
       {children}
-    </button>
+    </motion.button>
   )
 }
 

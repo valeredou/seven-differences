@@ -1,6 +1,7 @@
-import React, { Suspense, useRef } from 'react'
-import { Html, useGLTF, useProgress } from '@react-three/drei'
-import { Vector3 } from 'three'
+import React, { Suspense, useRef, useState } from 'react'
+import { Html, useCursor, useGLTF, useProgress } from '@react-three/drei'
+import { Selection, Select, EffectComposer, Outline } from '@react-three/postprocessing'
+import { useFrame } from '@react-three/fiber'
 
 function Loader() {
   const { active, progress, errors, item, loaded, total } = useProgress()
@@ -10,6 +11,15 @@ function Loader() {
 const FarmScene = (props) => {
   const group = useRef()
   const { nodes, materials } = useGLTF('/models/farm.gltf')
+  const [hovered, hover] = useState(null)
+
+  useCursor(hovered) //changes the cursor when hover state is trigered on a mesh
+
+  useFrame((state, delta) => {
+    const t = state.clock.getElapsedTime()
+    group.current.rotation.y = t * 0.1
+  })
+
   return (
     <group ref={group} {...props} dispose={null} position={[0, -1, 0]}>
       <mesh geometry={nodes.Circle.geometry} material={materials['default']} position={[0.47, 0, -0.61]} scale={3.76} />
@@ -39,22 +49,34 @@ const FarmScene = (props) => {
       />
 
       {!props.reduced && (
-        <mesh
-          geometry={nodes.Fence_White013.geometry}
-          material={nodes.Fence_White013.material}
-          position={[1.4, -0.01, -2.47]}
-          rotation={[0, Math.PI / 2, 0]}
-          scale={0.1}
-        />
+        <Select enabled={hovered == 'fence'}>
+          <mesh
+            onPointerOver={() => hover('fence')}
+            onPointerOut={() => hover('')}
+            geometry={nodes.Fence_White013.geometry}
+            material={nodes.Fence_White013.material}
+            position={[1.4, -0.01, -2.47]}
+            rotation={[0, Math.PI / 2, 0]}
+            scale={0.1}
+          />
+        </Select>
       )}
 
       {!props.reduced && (
-        <mesh
-          geometry={nodes.Wooden_Box.geometry}
-          material={nodes.Wooden_Box.material}
-          position={[0.19, 0.05, 0.21]}
-          scale={0.4}
-        />
+        <Select enabled={hovered == 'boxes'}>
+          <mesh
+            onPointerOver={() => {
+              hover('boxes')
+            }}
+            onPointerOut={() => {
+              hover('')
+            }}
+            geometry={nodes.Wooden_Box.geometry}
+            material={nodes.Wooden_Box.material}
+            position={[0.19, 0.05, 0.21]}
+            scale={0.4}
+          />
+        </Select>
       )}
       <mesh
         geometry={nodes.Trees.geometry}
@@ -75,7 +97,12 @@ const FarmScene = (props) => {
 export default function Farm(props) {
   return (
     <Suspense fallback={<Loader />}>
-      <FarmScene {...props} />
+      <Selection>
+        <EffectComposer multisampling={8} autoClear={false}>
+          <Outline blur visibleEdgeColor='white' edgeStrength={1000} width={1000} />
+        </EffectComposer>
+        <FarmScene {...props} />
+      </Selection>
     </Suspense>
   )
 }
