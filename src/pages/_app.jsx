@@ -27,7 +27,7 @@ export default function App({ Component, pageProps = { title: 'index' } }) {
               animateState: { opacity: 1, clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0% 100%)' },
               exitState: { clipPath: 'polygon(50% 0, 50% 0, 50% 100%, 50% 100%)' },
             }}
-            transition={{ duration: 0.75 }}
+            transition={{ duration: 0.75, type: 'tween', stiffness: 100 }}
             className='base-page-size'>
             <Component {...pageProps} />
           </motion.div>

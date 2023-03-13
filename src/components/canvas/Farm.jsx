@@ -3,6 +3,7 @@ import { Box, Html, Plane, useCursor, useGLTF, useProgress } from '@react-three/
 import { Selection, Select, EffectComposer, Outline } from '@react-three/postprocessing'
 import { useFrame } from '@react-three/fiber'
 import { clickObject, gameState } from '@/stores/gameStore'
+import { useSnapshot } from 'valtio'
 
 function Loader() {
   const { active, progress, errors, item, loaded, total } = useProgress()
@@ -14,15 +15,18 @@ const FarmScene = (props) => {
   const { nodes, materials } = useGLTF('/models/farm.gltf')
   const [hovered, hover] = useState(null)
 
+  const gameStore = useSnapshot(gameState)
+
   useCursor(hovered) //changes the cursor when hover state is trigered on a mesh
 
   useFrame((state, delta) => {
     const t = state.clock.getElapsedTime()
-    group.current.rotation.y = t * 0.1
+    if (gameStore.rotation) {
+      group.current.rotation.y = t * 0.1
+    }
   })
 
   const clickElement = (element) => {
-    console.log('element clicked', element)
     clickObject(element)
   }
 

@@ -21,4 +21,24 @@ nav {
       transform: scale(1.2);
     }
   }
+
+  .disable-rotation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $color-background;
+    gap: 10px;
+  }
+
+  .sync-position {
+    background-color: $color-background;
+    padding: 10px 20px;
+    border-radius: 5px;
+  }
+
+  .answers-count {
+    background-color: $color-background;
+    padding: 10px 20px;
+    border-radius: 5px;
+  }
 }

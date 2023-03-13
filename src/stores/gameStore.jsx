@@ -2,7 +2,7 @@ import { proxy } from 'valtio'
 import { toJS } from './helpers'
 import { levelAccomplished, levels, levelState } from './levelStore'
 
-export const gameState = proxy({ points: 0, currentAnswers: [] })
+export const gameState = proxy({ points: 0, currentAnswers: [], rotation: true, cameraPosition: {} })
 
 // export const clickElement = (element) => {
 //   if (!gameState.includes(element)) {
@@ -32,4 +32,8 @@ export const clickObject = (objectClicked) => {
   }
 
   console.log(toJS(levelState), toJS(gameState))
+}
+
+export const toggleRotation = () => {
+  gameState.rotation = !gameState.rotation
 }

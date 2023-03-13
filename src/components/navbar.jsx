@@ -1,7 +1,8 @@
-import { gameState } from '@/stores/gameStore'
+import { gameState, toggleRotation } from '@/stores/gameStore'
 import { levelState } from '@/stores/levelStore'
 import { motion } from 'framer-motion'
 import { useSnapshot } from 'valtio'
+import { ToggleButton } from './toggleButton'
 
 const Navbar = ({ props, children }) => {
   const levelStore = useSnapshot(levelState)
@@ -20,6 +21,17 @@ const Navbar = ({ props, children }) => {
       transition={{ duration: 0.5, delay: 0.5 }}
       id='nav'>
       {children}
+
+      <div className='sync-position'>Sync position</div>
+      <div className='disable-rotation'>
+        Rotation{' '}
+        <ToggleButton
+          toggleState={gameStore.rotation}
+          onClick={() => {
+            toggleRotation()
+          }}
+        />
+      </div>
       <div className='answers-count'>
         {gameStore.currentAnswers.length + ' / ' + levelStore.levels[levelStore.currentLevel].goodAnswers.length}
       </div>
