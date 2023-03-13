@@ -2,6 +2,7 @@ import React, { Suspense, useRef, useState } from 'react'
 import { Box, Html, Plane, useCursor, useGLTF, useProgress } from '@react-three/drei'
 import { Selection, Select, EffectComposer, Outline } from '@react-three/postprocessing'
 import { useFrame } from '@react-three/fiber'
+import { clickObject, gameState } from '@/stores/gameStore'
 
 function Loader() {
   const { active, progress, errors, item, loaded, total } = useProgress()
@@ -19,6 +20,11 @@ const FarmScene = (props) => {
     const t = state.clock.getElapsedTime()
     group.current.rotation.y = t * 0.1
   })
+
+  const clickElement = (element) => {
+    console.log('element clicked', element)
+    clickObject(element)
+  }
 
   return (
     <group ref={group} {...props} dispose={null} position={[0, 0, 0]} rotation={[Math.PI / 8, 0, 0]}>
@@ -66,6 +72,9 @@ const FarmScene = (props) => {
       {!props.reduced && (
         <Select enabled={hovered == 'fence'}>
           <mesh
+            onClick={() => {
+              clickElement('fence')
+            }}
             castShadow
             receiveShadow
             onPointerOver={() => hover('fence')}
@@ -82,6 +91,9 @@ const FarmScene = (props) => {
       {!props.reduced && (
         <Select enabled={hovered == 'boxes'}>
           <mesh
+            onClick={() => {
+              clickElement('boxes')
+            }}
             castShadow
             receiveShadow
             onPointerOver={() => {

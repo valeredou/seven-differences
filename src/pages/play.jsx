@@ -1,12 +1,31 @@
 import Farm from '@/components/canvas/Farm'
 import Scene from '@/components/canvas/Scene'
 import Navbar from '@/components/navbar'
+import { levelState } from '@/stores/levelStore'
 import { RoundedBox, Sphere } from '@react-three/drei'
 import { useRouter } from 'next/router'
 import React from 'react'
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+import { useSnapshot } from 'valtio'
+
+const MySwal = withReactContent(Swal)
 
 const Play = () => {
   const router = useRouter()
+  const levelStore = useSnapshot(levelState)
+
+  if (levelStore.levels[levelState.currentLevel].accomplished == true) {
+    MySwal.fire({
+      title: <p>Hello World</p>,
+      didOpen: () => {
+        // `MySwal` is a subclass of `Swal` with all the same instance & static methods
+        MySwal.showLoading()
+      },
+    }).then(() => {
+      return MySwal.fire(<p>Shorthand works too</p>)
+    })
+  }
   return (
     <div className='play-container'>
       <Navbar>

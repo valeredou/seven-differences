@@ -1,6 +1,12 @@
+import { gameState } from '@/stores/gameStore'
+import { levelState } from '@/stores/levelStore'
 import { motion } from 'framer-motion'
+import { useSnapshot } from 'valtio'
 
 const Navbar = ({ props, children }) => {
+  const levelStore = useSnapshot(levelState)
+  const gameStore = useSnapshot(gameState)
+
   return (
     <motion.nav
       initial='initialState'
@@ -14,6 +20,9 @@ const Navbar = ({ props, children }) => {
       transition={{ duration: 0.5, delay: 0.5 }}
       id='nav'>
       {children}
+      <div className='answers-count'>
+        {gameStore.currentAnswers.length + ' / ' + levelStore.levels[levelStore.currentLevel].goodAnswers.length}
+      </div>
     </motion.nav>
   )
 }
