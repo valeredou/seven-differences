@@ -40,18 +40,6 @@
 .play-container .scene {
   min-width: 300px;
 }
-.play-container .back {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  color: #F1FAEE;
-  font-size: 1.5em;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-.play-container .back:hover {
-  transform: scale(1.2);
-}
 
 button.button {
   border: none;
@@ -77,6 +65,30 @@ button.button.secondary {
 }
 button.button.secondary:hover {
   background: #d21a28;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 56px;
+  transition: 0.3s;
+  background-color: #1D3557;
+  z-index: 100;
+  padding: 10px 20px;
+}
+nav .back {
+  color: #F1FAEE;
+  font-size: 1.5em;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+nav .back:hover {
+  transform: scale(1.2);
 }
 
 * {

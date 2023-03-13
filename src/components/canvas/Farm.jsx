@@ -1,5 +1,5 @@
 import React, { Suspense, useRef, useState } from 'react'
-import { Html, useCursor, useGLTF, useProgress } from '@react-three/drei'
+import { Box, Html, Plane, useCursor, useGLTF, useProgress } from '@react-three/drei'
 import { Selection, Select, EffectComposer, Outline } from '@react-three/postprocessing'
 import { useFrame } from '@react-three/fiber'
 
@@ -21,27 +21,42 @@ const FarmScene = (props) => {
   })
 
   return (
-    <group ref={group} {...props} dispose={null} position={[0, -1, 0]}>
-      <mesh geometry={nodes.Circle.geometry} material={materials['default']} position={[0.47, 0, -0.61]} scale={3.76} />
+    <group ref={group} {...props} dispose={null} position={[0, 0, 0]} rotation={[Math.PI / 8, 0, 0]}>
       <mesh
+        receiveShadow
+        castShadow
+        geometry={nodes.Circle.geometry}
+        material={materials['default']}
+        position={[0.47, 0, -0.61]}
+        scale={3.76}
+      />
+      <mesh
+        castShadow
+        receiveShadow
         geometry={nodes.WindMill001.geometry}
         material={nodes.WindMill001.material}
         position={[1.26, 1.9, 0.17]}
         scale={0.48}
       />
       <mesh
+        castShadow
+        receiveShadow
         geometry={nodes.Plane.geometry}
         material={nodes.Plane.material}
         position={[-0.17, 1.05, 0.32]}
         scale={0.03}
       />
       <mesh
+        castShadow
+        receiveShadow
         geometry={nodes.WindMill.geometry}
         material={nodes.WindMill.material}
         position={[1.26, 1.56, 0.08]}
         scale={0.48}
       />
       <mesh
+        castShadow
+        receiveShadow
         geometry={nodes.Well.geometry}
         material={nodes.Well.material}
         position={[2.08, 0.23, -0.06]}
@@ -51,6 +66,8 @@ const FarmScene = (props) => {
       {!props.reduced && (
         <Select enabled={hovered == 'fence'}>
           <mesh
+            castShadow
+            receiveShadow
             onPointerOver={() => hover('fence')}
             onPointerOut={() => hover('')}
             geometry={nodes.Fence_White013.geometry}
@@ -65,6 +82,8 @@ const FarmScene = (props) => {
       {!props.reduced && (
         <Select enabled={hovered == 'boxes'}>
           <mesh
+            castShadow
+            receiveShadow
             onPointerOver={() => {
               hover('boxes')
             }}
@@ -79,12 +98,16 @@ const FarmScene = (props) => {
         </Select>
       )}
       <mesh
+        castShadow
+        receiveShadow
         geometry={nodes.Trees.geometry}
         material={nodes.Trees.material}
         position={[0.37, 0.15, -1.36]}
         scale={62.95}
       />
       <mesh
+        castShadow
+        receiveShadow
         geometry={nodes.Barn_01.geometry}
         material={nodes.Barn_01.material}
         position={[-0.18, 0.41, -0.18]}
