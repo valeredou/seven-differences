@@ -2,7 +2,7 @@ import React, { Suspense, useRef, useState } from 'react'
 import { Box, Html, Plane, useCursor, useGLTF, useProgress } from '@react-three/drei'
 import { Selection, Select, EffectComposer, Outline } from '@react-three/postprocessing'
 import { useFrame } from '@react-three/fiber'
-import { clickObject, gameState } from '@/stores/gameStore'
+import { clickObject, gameState, updateCameraPosition } from '@/stores/gameStore'
 import { useSnapshot } from 'valtio'
 
 function Loader() {
@@ -20,9 +20,23 @@ const FarmScene = (props) => {
   useCursor(hovered) //changes the cursor when hover state is trigered on a mesh
 
   useFrame((state, delta) => {
+    //console.log(state.camera)
     const t = state.clock.getElapsedTime()
-    if (gameStore.rotation) {
-      group.current.rotation.y = t * 0.1
+    if (props.name == 'farm1') {
+      updateCameraPosition(state.camera.position)
+      if (gameStore.rotation) {
+        group.current.rotation.y = t * 0.1
+      }
+    } else {
+      if (gameStore.syncCameraPosition === true) {
+        //console.log('cameraPosition', gameStore.cameraPosition)
+        //state.camera.position = gameStore.cameraPosition
+        state.camera.position.lerp(gameStore.cameraPosition, 0.5)
+        state.camera.updateProjectionMatrix()
+      }
+      if (gameStore.rotation) {
+        group.current.rotation.y = t * 0.1
+      }
     }
   })
 

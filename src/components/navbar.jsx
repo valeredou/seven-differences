@@ -1,12 +1,15 @@
-import { gameState, toggleRotation } from '@/stores/gameStore'
+import { gameState, toggleCameraSync, toggleRotation } from '@/stores/gameStore'
 import { levelState } from '@/stores/levelStore'
 import { motion } from 'framer-motion'
+import { useRouter } from 'next/router'
 import { useSnapshot } from 'valtio'
 import { ToggleButton } from './toggleButton'
+import { UilArrowLeft } from '@iconscout/react-unicons'
 
 const Navbar = ({ props, children }) => {
   const levelStore = useSnapshot(levelState)
   const gameStore = useSnapshot(gameState)
+  const router = useRouter()
 
   return (
     <motion.nav
@@ -20,9 +23,25 @@ const Navbar = ({ props, children }) => {
       }}
       transition={{ duration: 0.5, delay: 0.5 }}
       id='nav'>
+      <div
+        className='back'
+        onClick={() => {
+          router.push('/')
+        }}>
+        <UilArrowLeft size={30} /> {' BACK'}
+      </div>
+
       {children}
 
-      <div className='sync-position'>Sync position</div>
+      <div className='sync-position'>
+        Sync
+        <ToggleButton
+          toggleState={gameStore.syncCameraPosition}
+          onClick={() => {
+            toggleCameraSync()
+          }}
+        />
+      </div>
       <div className='disable-rotation'>
         Rotation{' '}
         <ToggleButton

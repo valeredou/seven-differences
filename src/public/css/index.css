@@ -82,6 +82,8 @@ nav {
   padding: 10px 20px;
 }
 nav .back {
+  display: flex;
+  align-items: center;
   color: #f1faee;
   font-size: 1.5em;
   cursor: pointer;
@@ -98,9 +100,11 @@ nav .disable-rotation {
   gap: 10px;
 }
 nav .sync-position {
-  background-color: #f1faee;
-  padding: 10px 20px;
-  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #f1faee;
+  gap: 10px;
 }
 nav .answers-count {
   background-color: #f1faee;

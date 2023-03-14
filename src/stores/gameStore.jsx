@@ -2,7 +2,13 @@ import { proxy } from 'valtio'
 import { toJS } from './helpers'
 import { levelAccomplished, levels, levelState } from './levelStore'
 
-export const gameState = proxy({ points: 0, currentAnswers: [], rotation: true, cameraPosition: {} })
+export const gameState = proxy({
+  points: 0, //number of points of the current level
+  currentAnswers: [],
+  rotation: true,
+  syncCameraPosition: false, //triggers camera position change on second scene
+  cameraPosition: {}, //contains the camera position from the first scene
+})
 
 // export const clickElement = (element) => {
 //   if (!gameState.includes(element)) {
@@ -36,4 +42,12 @@ export const clickObject = (objectClicked) => {
 
 export const toggleRotation = () => {
   gameState.rotation = !gameState.rotation
+}
+
+export const toggleCameraSync = () => {
+  gameState.syncCameraPosition = !gameState.syncCameraPosition
+}
+
+export const updateCameraPosition = (newCameraPosition) => {
+  gameState.cameraPosition = newCameraPosition
 }

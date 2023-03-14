@@ -20,6 +20,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@iconscout/react-unicons": "^2.0.0",
     "@react-three/drei": "^9.56.5",
     "@react-three/fiber": "^8.10.1",
     "@react-three/postprocessing": "^2.7.0",
