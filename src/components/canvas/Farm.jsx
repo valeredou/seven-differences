@@ -22,7 +22,7 @@ const FarmScene = (props) => {
   useFrame((state, delta) => {
     //console.log(state.camera)
     const t = state.clock.getElapsedTime()
-    if (props.name == 'farm1') {
+    if (props.name == 'Farm1') {
       updateCameraPosition(state.camera.position)
       if (gameStore.rotation) {
         group.current.rotation.y = t * 0.1
@@ -31,7 +31,7 @@ const FarmScene = (props) => {
       if (gameStore.syncCameraPosition === true) {
         //console.log('cameraPosition', gameStore.cameraPosition)
         //state.camera.position = gameStore.cameraPosition
-        state.camera.position.lerp(gameStore.cameraPosition, 0.5)
+        state.camera.position.lerp(gameStore.cameraPosition, 0.1)
         state.camera.updateProjectionMatrix()
       }
       if (gameStore.rotation) {
@@ -45,7 +45,7 @@ const FarmScene = (props) => {
   }
 
   return (
-    <group ref={group} {...props} dispose={null} position={[0, 0, 0]} rotation={[Math.PI / 8, 0, 0]}>
+    <group ref={group} {...props} dispose={null} position={[0, 0, 0]}>
       <mesh
         receiveShadow
         castShadow

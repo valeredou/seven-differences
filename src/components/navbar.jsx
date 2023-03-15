@@ -51,6 +51,7 @@ const Navbar = ({ props, children }) => {
           }}
         />
       </div>
+      <div className='current-level'>{'Level ' + levelStore.currentLevel}</div>
       <div className='answers-count'>
         {gameStore.currentAnswers.length + ' / ' + levelStore.levels[levelStore.currentLevel].goodAnswers.length}
       </div>

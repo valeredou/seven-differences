@@ -10,18 +10,9 @@ export const gameState = proxy({
   cameraPosition: {}, //contains the camera position from the first scene
 })
 
-// export const clickElement = (element) => {
-//   if (!gameState.includes(element)) {
-//     currentAnswers.push(element)
-//   }
-//   checkWin()
-// }
-
 export const clickObject = (objectClicked) => {
   const maxGoodAnswerCount = levelState.levels[levelState.currentLevel].goodAnswers.length
   let goodAnswerCount = gameState.points
-
-  console.log(objectClicked, goodAnswerCount < maxGoodAnswerCount)
 
   if (
     levelState.levels[levelState.currentLevel].goodAnswers.includes(objectClicked) &&
@@ -36,8 +27,6 @@ export const clickObject = (objectClicked) => {
   if (goodAnswerCount == maxGoodAnswerCount) {
     levelAccomplished()
   }
-
-  console.log(toJS(levelState), toJS(gameState))
 }
 
 export const toggleRotation = () => {

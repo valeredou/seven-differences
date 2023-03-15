@@ -1,6 +1,6 @@
 import { Canvas } from '@react-three/fiber'
-import { OrbitControls, Preload, SoftShadows, useHelper } from '@react-three/drei'
-import { AxesHelper, DirectionalLightHelper } from 'three'
+import { Environment, OrbitControls, Plane, Preload, Sky, SoftShadows, useHelper } from '@react-three/drei'
+import { AxesHelper, DirectionalLightHelper, Fog } from 'three'
 import { useRef } from 'react'
 import * as THREE from 'three'
 
@@ -8,18 +8,17 @@ export default function Scene({ children, ...props }) {
   // Everything defined in here will persist between route changes, only children are swapped
 
   return (
-    <Canvas {...props} shadows>
+    <Canvas {...props} shadows camera={{ fov: 75, near: 0.1, far: 1000, position: [0, 1, 4] }}>
       <Lights />
-      {/* <SoftShadows
-        enabled
-        size={{ value: 35, min: 0, max: 100, step: 0.1 }}
-        focus={{ value: 0.5, min: 0, max: 2, step: 0.1 }}
-        samples={6}
-      /> */}
+      <Environment preset='city' />
+      <Plane receiveShadow castShadow position={[0, -0.2, 0]} args={[50, 50]} rotation={[-Math.PI / 2, 0, 0]}>
+        <meshStandardMaterial color='white' />
+      </Plane>
+      <fog attach='fog' color='#1d3557' near={5} far={15} />
       {children}
       {/* <axesHelper args={[5]} /> */}
       <Preload all />
-      <OrbitControls />
+      <OrbitControls minPolarAngle={0} maxPolarAngle={Math.PI / 2 - 0.1} minDistance={1} maxDistance={10} />
     </Canvas>
   )
 }
@@ -29,8 +28,7 @@ const Lights = (props) => {
   //useHelper(light, THREE.DirectionalLightHelper, 'cyan')
   return (
     <group>
-      <ambientLight intensity={0.2} />
-      <directionalLight intensity={0.5} ref={light} castShadow shadow-mapSize={1024} position={[1, 1, 1]} />
+      <directionalLight intensity={1} ref={light} castShadow shadow-mapSize={1024} position={[1, 1, 1]} />
     </group>
   )
 }

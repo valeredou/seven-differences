@@ -24,6 +24,7 @@
     "@react-three/drei": "^9.56.5",
     "@react-three/fiber": "^8.10.1",
     "@react-three/postprocessing": "^2.7.0",
+    "animate.css": "^4.1.1",
     "framer-motion": "^10.2.4",
     "glsl-random": "^0.0.5",
     "next": "^13.1.6",

@@ -42,6 +42,11 @@ nav {
     color: $color-background;
     gap: 10px;
   }
+  .current-level {
+    background-color: $color-background;
+    padding: 10px 20px;
+    border-radius: 5px;
+  }
 
   .answers-count {
     background-color: $color-background;
