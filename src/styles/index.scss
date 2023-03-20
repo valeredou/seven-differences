@@ -9,6 +9,7 @@
 @import './components/buttons';
 @import './components/navbar';
 @import './components/togglebutton';
+@import './components/loader';
 
 * {
   box-sizing: border-box;
@@ -22,9 +23,10 @@ body,
   margin: 0;
   padding: 0;
   overflow: hidden;
+  background: $color-primary;
 }
 
 body {
-  background: $color-background;
+  background: $color-primary;
   font-family: 'Roboto', Arial, Helvetica, sans-serif;
 }

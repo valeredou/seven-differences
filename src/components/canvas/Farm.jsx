@@ -4,11 +4,7 @@ import { Selection, Select, EffectComposer, Outline } from '@react-three/postpro
 import { useFrame } from '@react-three/fiber'
 import { clickObject, gameState, updateCameraPosition } from '@/stores/gameStore'
 import { useSnapshot } from 'valtio'
-
-function Loader() {
-  const { active, progress, errors, item, loaded, total } = useProgress()
-  return <Html center>{progress} % loaded</Html>
-}
+import { Loader } from '../loader'
 
 const FarmScene = (props) => {
   const group = useRef()
@@ -20,17 +16,14 @@ const FarmScene = (props) => {
   useCursor(hovered) //changes the cursor when hover state is trigered on a mesh
 
   useFrame((state, delta) => {
-    //console.log(state.camera)
     const t = state.clock.getElapsedTime()
     if (props.name == 'Farm1') {
       updateCameraPosition(state.camera.position)
       if (gameStore.rotation) {
-        group.current.rotation.y = t * 0.1
+        group.current.rotation.y = t * 0.1 //use delta to avoid difference between high framerate pc
       }
     } else {
       if (gameStore.syncCameraPosition === true) {
-        //console.log('cameraPosition', gameStore.cameraPosition)
-        //state.camera.position = gameStore.cameraPosition
         state.camera.position.lerp(gameStore.cameraPosition, 0.1)
         state.camera.updateProjectionMatrix()
       }

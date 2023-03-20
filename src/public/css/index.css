@@ -140,6 +140,11 @@ nav .answers-count {
   border-radius: 40px;
 }
 
+.loader {
+  color: #f1faee;
+  font-size: 1.5em;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -152,9 +157,10 @@ body,
   margin: 0;
   padding: 0;
   overflow: hidden;
+  background: #1d3557;
 }
 
 body {
-  background: #f1faee;
+  background: #1d3557;
   font-family: "Roboto", Arial, Helvetica, sans-serif;
 }/*# sourceMappingURL=index.css.map */

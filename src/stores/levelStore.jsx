@@ -4,6 +4,7 @@ import { proxy } from 'valtio'
 import 'animate.css'
 import Farm from '@/components/canvas/Farm'
 import Shoe from '@/components/canvas/Shoe'
+import { resetGameState } from './gameStore'
 
 //contains arrays of the responses for each level (key)
 const levels = {
@@ -20,6 +21,7 @@ export const initLevel = () => {
 export const levelAccomplished = () => {
   const MySwal = withReactContent(Swal)
   levels[levelState.currentLevel].accomplished = true
+  resetGameState()
   MySwal.fire({
     title: 'Congratulations!',
     icon: 'success',

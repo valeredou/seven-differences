@@ -4,11 +4,7 @@ import { Selection, Select, EffectComposer, Outline } from '@react-three/postpro
 import { useFrame } from '@react-three/fiber'
 import { clickObject, gameState, updateCameraPosition } from '@/stores/gameStore'
 import { proxy, useSnapshot } from 'valtio'
-
-function Loader() {
-  const { active, progress, errors, item, loaded, total } = useProgress()
-  return <Html center>{progress} % loaded</Html>
-}
+import { Loader } from '../loader'
 
 const state = proxy({
   current: null,

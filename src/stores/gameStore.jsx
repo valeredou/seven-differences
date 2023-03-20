@@ -29,6 +29,11 @@ export const clickObject = (objectClicked) => {
   }
 }
 
+export const resetGameState = () => {
+  gameState.points = 0
+  gameState.currentAnswers = []
+}
+
 export const toggleRotation = () => {
   gameState.rotation = !gameState.rotation
 }
