@@ -8,25 +8,25 @@ import { Perf } from 'r3f-perf'
 
 export default function Scene({ children, ...props }) {
   // Everything defined in here will persist between route changes, only children are swapped
-  const [dpr, setDpr] = useState(1.5)
+
   return (
-    <Canvas {...props} camera={{ fov: 75, near: 0.1, far: 1000, position: [0, 1, 4] }}>
+    <Canvas {...props}>
       {/* <Lights /> */}
-      <Perf position='top-left' />
+      <Perf position='bottom-left' />
 
       <color attach='background' args={['#0f2043']} />
-      <Backdrop receiveShadow floor={2} position={[0, -0.5, -3]} scale={[50, 10, 4]}>
+      {/* <Backdrop receiveShadow floor={2} position={[0, -0.5, -3]} scale={[50, 10, 4]}>
         <meshStandardMaterial color={colors.primary} />
-      </Backdrop>
-      <Stage adjustCamera intensity={0.6} shadows>
-        {/* <Plane receiveShadow castShadow position={[0, -0.2, 0]} args={[50, 50]} rotation={[-Math.PI / 2, 0, 0]}>
+      </Backdrop> */}
+      {/* <Stage adjustCamera intensity={0.6} shadows> */}
+      {/* <Plane receiveShadow castShadow position={[0, -0.2, 0]} args={[50, 50]} rotation={[-Math.PI / 2, 0, 0]}>
           <meshStandardMaterial color='white' />
         
         </Plane> */}
-        {/* <fog attach='fog' color='#1d3557' near={5} far={15} /> */}
-        {children}
-      </Stage>
-      <OrbitControls
+      {/* <fog attach='fog' color='#1d3557' near={5} far={15} /> */}
+      {/* </Stage> */}
+      {children}
+      {/* <OrbitControls
         makeDefault
         minAzimuthAngle={-Math.PI / 4}
         maxAzimuthAngle={Math.PI / 4}
@@ -35,9 +35,9 @@ export default function Scene({ children, ...props }) {
         minDistance={1}
         maxDistance={1}
         minZoom={1}
-      />
-      {/* <axesHelper args={[5]} /> */}
-      <Preload all />
+      /> */}
+      <axesHelper args={[5]} />
+      {/* <Preload all /> */}
     </Canvas>
   )
 }

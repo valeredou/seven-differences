@@ -14,10 +14,6 @@ const levels = {
 
 export const levelState = proxy({ currentLevel: 1, levels: levels })
 
-export const initLevel = () => {
-  levelState.currentLevel = 1
-}
-
 export const levelAccomplished = () => {
   const MySwal = withReactContent(Swal)
   levels[levelState.currentLevel].accomplished = true

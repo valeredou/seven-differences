@@ -44,12 +44,14 @@ nav {
   }
   .current-level {
     background-color: $color-background;
+    color: $color-primary;
     padding: 10px 20px;
     border-radius: 5px;
   }
 
   .answers-count {
     background-color: $color-background;
+    color: $color-primary;
     padding: 10px 20px;
     border-radius: 5px;
   }

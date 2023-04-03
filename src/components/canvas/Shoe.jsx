@@ -1,4 +1,4 @@
-import React, { Suspense, useRef, useState } from 'react'
+import React, { Suspense, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { Box, Html, Plane, useCursor, useGLTF, useProgress } from '@react-three/drei'
 import { Selection, Select, EffectComposer, Outline } from '@react-three/postprocessing'
 import { useFrame } from '@react-three/fiber'
@@ -22,6 +22,7 @@ const state = proxy({
 
 const ShoeScene = (props) => {
   const group = useRef()
+  const lacesRef = useRef()
   const { nodes, materials } = useGLTF('/models/shoe/shoe-draco.glb')
   const [hovered, hover] = useState(null)
 
@@ -31,23 +32,19 @@ const ShoeScene = (props) => {
   useCursor(hovered) //changes the cursor when hover state is trigered on a mesh
 
   useFrame((state, delta) => {
-    //console.log(state.camera)
-    const t = state.clock.getElapsedTime()
+    //SYNCING
     if (props.name == 'Shoe1') {
       updateCameraPosition(state.camera.position)
-      if (gameStore.rotation) {
-        group.current.rotation.y = t * 0.1
-      }
     } else {
       if (gameStore.syncCameraPosition === true) {
-        //console.log('cameraPosition', gameStore.cameraPosition)
-        //state.camera.position = gameStore.cameraPosition
-        state.camera.position.lerp(gameStore.cameraPosition, 0.1)
+        state.camera.position.lerp(gameStore.cameraPosition, 0.2)
         state.camera.updateProjectionMatrix()
       }
-      if (gameStore.rotation) {
-        group.current.rotation.y = t * 0.1
-      }
+    }
+
+    //ROTATION
+    if (gameStore.rotation) {
+      group.current.rotation.y += 0.2 * delta
     }
   })
 
@@ -56,16 +53,19 @@ const ShoeScene = (props) => {
   }
 
   return (
-    <group ref={group} {...props} dispose={null} position={[0, 0.4, 0]}>
+    <group ref={group} {...props} dispose={null} position={[0, 0, 0]}>
       {!props.reduced && (
-        <Select enabled={hovered == 'laces'}>
+        <Select enabled={hovered == 'laces' ? true : false}>
           <mesh
             receiveShadow
             castShadow
+            ref={lacesRef}
             onClick={() => {
               clickElement('laces')
             }}
-            onPointerOver={() => hover('laces')}
+            onPointerOver={() => {
+              hover('laces')
+            }}
             onPointerOut={() => hover('')}
             geometry={nodes.shoe.geometry}
             material={materials.laces}
@@ -138,14 +138,7 @@ const ShoeScene = (props) => {
 export default function Shoe(props) {
   return (
     <Suspense fallback={<Loader />}>
-      <Selection>
-        <EffectComposer multisampling={8} autoClear={false}>
-          <Outline blur visibleEdgeColor='red' edgeStrength={1000} width={1000} />
-        </EffectComposer>
-        <ShoeScene {...props} />
-      </Selection>
+      <ShoeScene {...props} />
     </Suspense>
   )
 }
-
-useGLTF.preload('/models/farm.gltf')
