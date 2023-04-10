@@ -17,9 +17,9 @@ const Navbar = ({ props, children }) => {
       animate='animateState'
       exit='exitState'
       variants={{
-        initialState: { height: '0px', opacity: 0 },
-        animateState: { height: '56px', opacity: 1 },
-        exitState: { height: '0px', opacity: 0 },
+        initialState: { opacity: 0 },
+        animateState: { opacity: 1 },
+        exitState: { opacity: 0 },
       }}
       transition={{ duration: 0.5, delay: 0.5 }}
       id='nav'>

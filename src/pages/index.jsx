@@ -3,6 +3,7 @@ import Instructions from '@/components/dom/Instructions'
 import Button from '@/components/button'
 import { useRouter } from 'next/router'
 import { motion } from 'framer-motion'
+import HomeScene from '@/components/canvas/HomeScene'
 
 // Dynamic import is used to prevent a payload when the website starts, that includes threejs, r3f etc..
 // WARNING ! errors might get obfuscated by using dynamic import.
@@ -15,7 +16,7 @@ export default function Home(props) {
   const router = useRouter()
   return (
     <div className='home-container'>
-      <motion.h1
+      {/* <motion.h1
         initial='initialState'
         animate='animateState'
         exit='exitState'
@@ -43,14 +44,14 @@ export default function Home(props) {
         }}
         transition={{ duration: 0.75 }}>
         PLAY
-      </Button>
+      </Button> */}
     </div>
   )
 }
 
 // Canvas components go here
 // It will receive same props as the Page component (from getStaticProps, etc.)
-//Page.canvas = (props) => <Logo scale={0.5} route='/blob' position-y={-1} />
+Home.canvas = (props) => <HomeScene scale={0.5} route='/play' />
 
 export async function getStaticProps() {
   return { props: { title: 'Home' } }

@@ -49,6 +49,7 @@ const ShoeScene = (props) => {
   })
 
   const clickElement = (element) => {
+    console.log('je passe da,ns le clickElement')
     clickObject(element)
   }
 

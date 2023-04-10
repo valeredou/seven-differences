@@ -20,7 +20,7 @@ const FarmScene = (props) => {
     if (props.name == 'Farm1') {
       updateCameraPosition(state.camera.position)
       if (gameStore.rotation) {
-        group.current.rotation.y = t * 0.1 //use delta to avoid difference between high framerate pc
+        group.current.rotation.y += delta * 0.1 //use delta to avoid difference between high framerate pc
       }
     } else {
       if (gameStore.syncCameraPosition === true) {
@@ -28,7 +28,7 @@ const FarmScene = (props) => {
         state.camera.updateProjectionMatrix()
       }
       if (gameStore.rotation) {
-        group.current.rotation.y = t * 0.1
+        group.current.rotation.y += delta * 0.1
       }
     }
   })
@@ -143,12 +143,7 @@ const FarmScene = (props) => {
 export default function Farm(props) {
   return (
     <Suspense fallback={<Loader />}>
-      <Selection>
-        <EffectComposer multisampling={8} autoClear={false}>
-          <Outline blur visibleEdgeColor='white' edgeStrength={1000} width={1000} />
-        </EffectComposer>
-        <FarmScene {...props} />
-      </Selection>
+      <FarmScene {...props} />
     </Suspense>
   )
 }
