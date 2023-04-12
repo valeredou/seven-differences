@@ -44,7 +44,7 @@ const PlayScene = (props) => {
             <Outline visibleEdgeColor='white' blur edgeStrength={100} width={500} xRay={false} />
           </EffectComposer>
           {/* <Bounds fit clip observe damping={6} margin={1}> */}
-          <PresentationControls global speed={2}>
+          <PresentationControls global speed={2} zoom={0.8}>
             <ObjectToDisplay name={objectName + '1'} />
           </PresentationControls>
           {/* </Bounds> */}

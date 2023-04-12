@@ -1,3 +1,4 @@
+import Dropdown from '@/components/dropdown'
 import Navbar from '@/components/navbar'
 
 import { Canvas } from '@react-three/fiber'
@@ -15,7 +16,9 @@ const Play = () => {
 
   return (
     <div className='play-container' ref={containerRef}>
-      <Navbar></Navbar>
+      {/* <Navbar></Navbar> */}
+
+      <Dropdown />
 
       <div className='main-view' ref={mainView} />
       <div

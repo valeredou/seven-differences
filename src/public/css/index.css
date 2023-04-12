@@ -136,10 +136,78 @@ nav .answers-count {
   border-radius: 5px;
 }
 
+.dropdown-container {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  font-size: 1.2em;
+  color: #1d3557;
+  width: auto;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.5333333333);
+}
+.dropdown-container .header {
+  padding: 10px 20px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #292d39;
+  color: #535760;
+}
+.dropdown-container .header .title {
+  color: #fefefe;
+  margin: 0px 20px;
+}
+.dropdown-container .header .restart,
+.dropdown-container .header .toggle {
+  transition: all 0.2s ease-in-out;
+}
+.dropdown-container .header .restart:hover,
+.dropdown-container .header .toggle:hover {
+  color: #fefefe;
+  cursor: pointer;
+}
+.dropdown-container .content {
+  background-color: #181c20;
+  color: #8c92a4;
+  width: 100%;
+}
+.dropdown-container .content .item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 20px;
+}
+.dropdown-container .content .item:first-child {
+  padding-top: 15px;
+}
+.dropdown-container .content .item:last-child {
+  padding-bottom: 15px;
+}
+.dropdown-container .content .item .text {
+  min-width: 50%;
+}
+.dropdown-container .content .item .value {
+  color: #fefefe;
+}
+.dropdown-container .content .disable-rotation {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
 .switch {
   width: 50px;
   height: 30px;
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: #bfbfbf;
   display: flex;
   justify-content: flex-start;
   border-radius: 50px;
@@ -176,6 +244,7 @@ nav .answers-count {
     margin: 0;
     padding: 0;
     overflow: hidden;
+    background-color: #1d3557;
   }
 }
 body {

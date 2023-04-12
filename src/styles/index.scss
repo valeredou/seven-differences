@@ -12,6 +12,7 @@
 //COMPONENTS
 @import './components/buttons';
 @import './components/navbar';
+@import './components/dropdown';
 @import './components/togglebutton';
 @import './components/loader';
 
@@ -28,6 +29,7 @@
     margin: 0;
     padding: 0;
     overflow: hidden;
+    background-color: $color-primary;
   }
 }
 
