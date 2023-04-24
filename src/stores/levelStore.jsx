@@ -12,7 +12,7 @@ const levels = {
   2: { name: 'Shoe', component: Shoe, goodAnswers: ['patch', 'laces'], accomplished: false },
 }
 
-export const levelState = proxy({ currentLevel: 1, levels: levels })
+export const levelState = proxy({ currentLevel: 2, levels: levels })
 
 export const levelAccomplished = () => {
   const MySwal = withReactContent(Swal)

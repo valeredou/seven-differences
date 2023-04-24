@@ -43,13 +43,15 @@ const PlayScene = (props) => {
           <EffectComposer multisampling={8} autoClear={false} renderPriority={2}>
             <Outline visibleEdgeColor='white' blur edgeStrength={100} width={500} xRay={false} />
           </EffectComposer>
-          {/* <Bounds fit clip observe damping={6} margin={1}> */}
-          <PresentationControls global speed={2} zoom={0.8}>
+          <Bounds fit clip observe damping={6} margin={1}>
+            {/* <PresentationControls global speed={2} zoom={0.8}> */}
             <ObjectToDisplay name={objectName + '1'} />
-          </PresentationControls>
-          {/* </Bounds> */}
+            {/* </PresentationControls> */}
+          </Bounds>
         </Selection>
         {/* <Box /> */}
+        <OrbitControls />
+        <axesHelper />
         <ContactShadows position={[0, -0.8, 0]} opacity={0.4} blur={1} far={0.8} />
       </View>
       <View index={2} track={props.referenceView}>

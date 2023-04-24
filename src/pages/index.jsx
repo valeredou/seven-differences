@@ -1,58 +1,44 @@
+import Dropdown from '@/components/dropdown'
+import Navbar from '@/components/navbar'
+
+import { Canvas } from '@react-three/fiber'
 import dynamic from 'next/dynamic'
-import Instructions from '@/components/dom/Instructions'
-import Button from '@/components/button'
-import { useRouter } from 'next/router'
-import { motion } from 'framer-motion'
-import HomeScene from '@/components/canvas/HomeScene'
+import React, { createRef, useEffect, useRef } from 'react'
 
-// Dynamic import is used to prevent a payload when the website starts, that includes threejs, r3f etc..
-// WARNING ! errors might get obfuscated by using dynamic import.
-// If something goes wrong go back to a static import to show the error.
-// https://github.com/pmndrs/react-three-next/issues/49
-//const Logo = dynamic(() => import('@/components/canvas/Logo'), { ssr: false })
+//refs for View
+const mainView = createRef()
+const referenceView = createRef()
 
-// Dom components go here
-export default function Home(props) {
-  const router = useRouter()
+const PlayScene = dynamic(() => import('@/components/canvas/PlayScene'), { ssr: false })
+
+const Play = () => {
+  const containerRef = useRef()
+
   return (
-    <div className='home-container'>
-      {/* <motion.h1
-        initial='initialState'
-        animate='animateState'
-        exit='exitState'
-        variants={{
-          initialState: { opacity: 0.2, y: 30 },
-          animateState: { opacity: 1, y: 0 },
-          exitState: { y: 50 },
+    <div className='play-container' ref={containerRef}>
+      {/* <Navbar></Navbar> */}
+
+      <Dropdown />
+
+      <div className='main-view' ref={mainView} />
+      <div
+        className='reference-view'
+        ref={referenceView}
+        onPointerOver={() => {
+          referenceView.current.style.width = '50vw'
+          referenceView.current.style.height = '35vw'
         }}
-        transition={{ duration: 0.75 }}>
-        SEVEN DIFFERENCES
-      </motion.h1>
-      <Button
-        type='button'
-        className='secondary play-button'
-        onClick={() => {
-          router.push('/play')
+        onPointerOut={() => {
+          referenceView.current.style.width = '25vw'
+          referenceView.current.style.height = '25vw'
         }}
-        initial='initialState'
-        animate='animateState'
-        exit='exitState'
-        variants={{
-          initialState: { opacity: 0.2, y: -30 },
-          animateState: { opacity: 1, y: 0 },
-          exitState: { y: -50 },
-        }}
-        transition={{ duration: 0.75 }}>
-        PLAY
-      </Button> */}
+      />
     </div>
   )
 }
 
 // Canvas components go here
 // It will receive same props as the Page component (from getStaticProps, etc.)
-Home.canvas = (props) => <HomeScene scale={0.5} route='/play' />
+Play.canvas = (props) => <PlayScene mainView={mainView} referenceView={referenceView} />
 
-export async function getStaticProps() {
-  return { props: { title: 'Home' } }
-}
+export default Play

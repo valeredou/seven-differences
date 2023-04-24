@@ -6,9 +6,10 @@ import { levelState } from '@/stores/levelStore'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import { isMobile } from 'react-device-detect'
 
 const Dropdown = () => {
-  const [isOpen, setOpen] = useState(true)
+  const [isOpen, setOpen] = useState(isMobile ? false : true)
 
   const levelStore = useSnapshot(levelState)
   const gameStore = useSnapshot(gameState)

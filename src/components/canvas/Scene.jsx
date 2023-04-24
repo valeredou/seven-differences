@@ -48,7 +48,7 @@ export default function Scene({ children, ...props }) {
         </Plane> */}
         {/* <fog attach='fog' color='#1d3557' near={5} far={15} /> */}
         {/* </Stage> */}
-        {/* <axesHelper args={[5]} /> */}
+        {/* <axesHelper args={[10]} /> */}
         {/* <Preload all /> */}
       </Canvas>
     </>
