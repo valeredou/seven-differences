@@ -5,6 +5,7 @@ import { useFrame } from '@react-three/fiber'
 import { clickObject, gameState, updateCameraPosition } from '@/stores/gameStore'
 import { proxy, useSnapshot } from 'valtio'
 import { Loader } from '../loader'
+import { isMobile } from 'react-device-detect'
 
 const state = proxy({
   current: null,
@@ -63,6 +64,12 @@ const ShoeScene = (props) => {
             ref={lacesRef}
             onClick={() => {
               clickElement('laces')
+              if (isMobile) {
+                hover('laces')
+                setTimeout(() => {
+                  hover(null)
+                }, 100)
+              }
             }}
             onPointerOver={() => {
               hover('laces')
@@ -123,6 +130,12 @@ const ShoeScene = (props) => {
             castShadow
             onClick={() => {
               clickElement('patch')
+              if (isMobile) {
+                hover('patch')
+                setTimeout(() => {
+                  hover(null)
+                }, 100)
+              }
             }}
             onPointerOver={() => hover('patch')}
             onPointerOut={() => hover('')}
