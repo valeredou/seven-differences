@@ -1,28 +1,42 @@
+'use client'
+
 import { UilArrowLeft, UilRedo, UilAngleRightB } from '@iconscout/react-unicons'
 import { ToggleButton } from './toggleButton'
-import { gameState, toggleCameraSync, toggleRotation } from '@/stores/gameStore'
+import { gameState, resetGameState, toggleCameraSync, toggleRotation } from '@/stores/gameStore'
 import { useSnapshot } from 'valtio'
 import { levelState } from '@/stores/levelStore'
 import { useRouter } from 'next/router'
-import { useState } from 'react'
-import { motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
+import { motion, useAnimate } from 'framer-motion'
 import { isMobile } from 'react-device-detect'
+import { timerStore } from '@/stores/timerStore'
+import confetti from 'canvas-confetti'
 
 const Dropdown = () => {
+  const [scope, animate] = useAnimate()
   const [isOpen, setOpen] = useState(isMobile ? false : true)
 
   const levelStore = useSnapshot(levelState)
   const gameStore = useSnapshot(gameState)
   const router = useRouter()
 
+  useEffect(() => {
+    if (gameStore.points != 0) {
+      animate(scope.curent, { opacity: [0, 1, 0] })
+    }
+  }, [gameStore.points])
+
   return (
     <div className='dropdown-container'>
+      <div className='good-answer' ref={scope}>
+        + 1
+      </div>
       <div className='header'>
         <motion.div className='toggle' animate={{ rotate: isOpen ? 90 : 0 }} transition={{ duration: 0.2 }}>
           <UilAngleRightB className='toggle-icon' onClick={() => setOpen(!isOpen)} size={30} />{' '}
         </motion.div>
         <div className='title'>7 DIFFERENCES</div>
-        <div className='restart'>
+        <div className='restart' onClick={() => resetGameState()}>
           <UilRedo className='redo' size={30} />{' '}
         </div>
       </div>

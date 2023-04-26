@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import { UilStopwatch } from '@iconscout/react-unicons'
+import { timerStore } from '@/stores/timerStore'
+import { useSnapshot } from 'valtio'
 
 function Timer() {
-  const [milliseconds, setMilliseconds] = useState(0)
+  const [time, setTime] = useState(timerStore.time)
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setMilliseconds((milliseconds) => milliseconds + 10)
+    const intervalId = setInterval(() => {
+      setTime(timerStore.time)
     }, 10)
-    return () => clearInterval(interval)
+
+    return () => clearInterval(intervalId)
   }, [])
 
   const formatTime = (time) => {
@@ -21,9 +24,13 @@ function Timer() {
   }
 
   return (
-    <div className='timer'>
+    <div
+      className='timer'
+      onClick={() => {
+        timerStore.startTimer()
+      }}>
       <UilStopwatch className='stopwatch' />
-      <h1> {formatTime(milliseconds)}</h1>
+      <h1> {formatTime(time)}</h1>
     </div>
   )
 }

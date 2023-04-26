@@ -1960,6 +1960,11 @@ caniuse-lite@^1.0.30001406, caniuse-lite@^1.0.30001426, caniuse-lite@^1.0.300014
   resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001458.tgz"
   integrity sha512-lQ1VlUUq5q9ro9X+5gOEyH7i3vm+AYVT1WDCVB69XOZ17KZRhnZ9J0Sqz7wTHQaLBJccNCHq8/Ww5LlOIZbB0w==
 
+canvas-confetti@^1.6.0:
+  version "1.6.0"
+  resolved "https://registry.npmjs.org/canvas-confetti/-/canvas-confetti-1.6.0.tgz"
+  integrity sha512-ej+w/m8Jzpv9Z7W7uJZer14Ke8P2ogsjg4ZMGIuq4iqUOqY2Jq8BNW42iGmNfRwREaaEfFIczLuZZiEVSYNHAA==
+
 chalk@^2.0.0:
   version "2.4.2"
   resolved "https://registry.npmjs.org/chalk/-/chalk-2.4.2.tgz"
@@ -2816,10 +2821,10 @@ fraction.js@^4.2.0:
   resolved "https://registry.npmjs.org/fraction.js/-/fraction.js-4.2.0.tgz"
   integrity sha512-MhLuK+2gUcnZe8ZHlaaINnQLl0xRIGRfcGk2yl8xoQAfHrSsL3rYu6FCmBdkdbhc9EPlwyGHewaRsvwRMJtAlA==
 
-framer-motion@^10.2.4:
-  version "10.2.4"
-  resolved "https://registry.npmjs.org/framer-motion/-/framer-motion-10.2.4.tgz"
-  integrity sha512-0a5yR1jwOfSO0jJEpZUrgWYEa1EPU2yGVmytSu+uMYWV7bcFHwaHVYz2GchzWPH1rW7nXg8zmw8cp4+zNJJaUA==
+framer-motion@^10.12.4:
+  version "10.12.4"
+  resolved "https://registry.npmjs.org/framer-motion/-/framer-motion-10.12.4.tgz"
+  integrity sha512-9gLtv8T6dui0tujHROR+VM3kdJyKiFCFiD94IQE+0OuX6LaIyXtdVpviokVdrHSb1giWhmmX4yzoucALMx6mtw==
   dependencies:
     tslib "^2.4.0"
   optionalDependencies:

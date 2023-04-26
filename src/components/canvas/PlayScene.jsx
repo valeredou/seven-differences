@@ -23,6 +23,8 @@ import { AdditiveBlending, NormalBlending } from 'three'
 import { useSnapshot } from 'valtio'
 import { colors } from '../helpers'
 import Shoe from './Shoe'
+import { gameState } from '@/stores/gameStore'
+import confetti from 'canvas-confetti'
 
 const PlayScene = (props) => {
   const [hovered, onHover] = useState(null)
@@ -32,6 +34,16 @@ const PlayScene = (props) => {
 
   const ObjectToDisplay = levelStore.levels[levelStore.currentLevel].component
   const objectName = levelStore.levels[levelStore.currentLevel].name
+
+  const game = useSnapshot(gameState)
+  const level = useSnapshot(levelState)
+
+  useEffect(() => {
+    console.log(game.points)
+    if (game.points !== 0) {
+      confetti()
+    }
+  }, [game.points])
 
   return (
     <>

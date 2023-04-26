@@ -1,6 +1,7 @@
 import { proxy } from 'valtio'
 import { toJS } from './helpers'
 import { levelAccomplished, levels, levelState } from './levelStore'
+import { timerStore } from './timerStore'
 
 export const gameState = proxy({
   points: 0, //number of points of the current level
@@ -32,6 +33,7 @@ export const clickObject = (objectClicked) => {
 export const resetGameState = () => {
   gameState.points = 0
   gameState.currentAnswers = []
+  timerStore.resetTimer()
 }
 
 export const toggleRotation = () => {
