@@ -43,9 +43,15 @@
   top: 20px;
   right: 20px;
   width: 25vw;
-  height: 15vh;
+  height: 25vh;
   border-radius: 10px;
   transition: all 0.3s ease-in-out;
+}
+@media (max-width: 599px) {
+  .play-container .reference-view {
+    height: 15vh;
+    top: 70px;
+  }
 }
 
 .canvas {
@@ -154,7 +160,9 @@ nav .answers-count {
 }
 @media (max-width: 599px) {
   .dropdown-container {
-    left: 0;
+    width: 100%;
+    left: 50%;
+    transform: translate(-50%, 0%);
     top: 0;
     border-radius: 0px 0px 5px 0px;
     font-size: 1.1em;
@@ -243,6 +251,28 @@ nav .answers-count {
 .loader {
   color: #f1faee;
   font-size: 1.5em;
+}
+
+.timer {
+  display: flex;
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  background: none;
+  color: #1d3557;
+  font-size: 1.2em;
+  z-index: 1000;
+  transform: translate(-50%, 0%);
+  margin: auto;
+}
+.timer .stopwatch {
+  margin-right: 5px;
+}
+@media (max-width: 599px) {
+  .timer {
+    top: inherit;
+    bottom: 20px;
+  }
 }
 
 @layer base {

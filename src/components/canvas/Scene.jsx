@@ -24,7 +24,7 @@ export default function Scene({ children, ...props }) {
     <>
       <Canvas {...props}>
         {/* <Lights /> */}
-        <Perf position='bottom-left' />
+        {/* <Perf position='bottom-left' /> */}
         {children}
         <PerspectiveCamera position={[1.5, 0, 3]} />
         <OrbitControls

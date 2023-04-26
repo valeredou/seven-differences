@@ -50,7 +50,7 @@ const PlayScene = (props) => {
           </Bounds>
         </Selection>
         {/* <Box /> */}
-        <OrbitControls />
+        <OrbitControls maxPolarAngle={Math.PI / 2} minDistance={1} maxDistance={10} />
         <axesHelper />
         <ContactShadows position={[0, -0.8, 0]} opacity={0.4} blur={1} far={0.8} />
       </View>

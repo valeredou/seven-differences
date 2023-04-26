@@ -1,5 +1,6 @@
 import Dropdown from '@/components/dropdown'
 import Navbar from '@/components/navbar'
+import Timer from '@/components/timer'
 
 import { Canvas } from '@react-three/fiber'
 import dynamic from 'next/dynamic'
@@ -27,22 +28,24 @@ const Play = () => {
 
       <Dropdown />
 
+      <Timer />
+
       <div className='main-view' ref={mainView} />
       <div
         className={`reference-view `}
         ref={referenceView}
-        // onPointerOver={() => {
-        //   if (!isMobile) {
-        //     referenceView.current.style.width = '50vw'
-        //     referenceView.current.style.height = '35vw'
-        //   }
-        // }}
-        // onPointerOut={() => {
-        //   if (!isMobile) {
-        //     referenceView.current.style.width = '25vw'
-        //     referenceView.current.style.height = '25vw'
-        //   }
-        // }}
+        onPointerOver={() => {
+          if (!isMobile) {
+            referenceView.current.style.width = '50vw'
+            referenceView.current.style.height = '50vh'
+          }
+        }}
+        onPointerOut={() => {
+          if (!isMobile) {
+            referenceView.current.style.width = '25vw'
+            referenceView.current.style.height = '25vh'
+          }
+        }}
         onClick={() => {
           if (isMobile) {
             let tempRef = !referenceOpen

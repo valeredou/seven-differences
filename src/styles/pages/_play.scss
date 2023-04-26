@@ -25,9 +25,14 @@
     top: 20px;
     right: 20px;
     width: 25vw;
-    height: 15vh;
+    height: 25vh;
     border-radius: 10px;
     transition: all 0.3s ease-in-out;
+
+    @include for-phone-only() {
+      height: 15vh;
+      top: 70px;
+    }
   }
 }
 .canvas {

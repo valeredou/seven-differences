@@ -1,0 +1,26 @@
+.timer {
+  display: flex;
+
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  background: none;
+
+  color: $color-primary;
+  font-size: 1.2em;
+
+  z-index: 1000;
+
+  transform: translate(-50%, 0%);
+
+  margin: auto;
+
+  .stopwatch {
+    margin-right: 5px;
+  }
+
+  @include for-phone-only() {
+    top: inherit;
+    bottom: 20px;
+  }
+}
