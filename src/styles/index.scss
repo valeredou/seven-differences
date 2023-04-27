@@ -38,3 +38,14 @@
 body {
   font-family: 'Roboto', Arial, Helvetica, sans-serif;
 }
+
+.good-answer {
+  position: absolute;
+  left: 100px;
+  top: 225px;
+  z-index: 2000;
+  color: $color-primary;
+  opacity: 0;
+  font-weight: bold;
+  font-size: 2em;
+}

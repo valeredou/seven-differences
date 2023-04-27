@@ -20,17 +20,8 @@ const Dropdown = () => {
   const gameStore = useSnapshot(gameState)
   const router = useRouter()
 
-  useEffect(() => {
-    if (gameStore.points != 0) {
-      animate(scope.curent, { opacity: [0, 1, 0] })
-    }
-  }, [gameStore.points])
-
   return (
     <div className='dropdown-container'>
-      <div className='good-answer' ref={scope}>
-        + 1
-      </div>
       <div className='header'>
         <motion.div className='toggle' animate={{ rotate: isOpen ? 90 : 0 }} transition={{ duration: 0.2 }}>
           <UilAngleRightB className='toggle-icon' onClick={() => setOpen(!isOpen)} size={30} />{' '}

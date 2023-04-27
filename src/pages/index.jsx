@@ -1,11 +1,15 @@
 import Dropdown from '@/components/dropdown'
 import Navbar from '@/components/navbar'
 import Timer from '@/components/timer'
+import { gameState } from '@/stores/gameStore'
+import { levelState } from '@/stores/levelStore'
 
 import { Canvas } from '@react-three/fiber'
+import { useAnimate } from 'framer-motion'
 import dynamic from 'next/dynamic'
 import React, { createRef, useEffect, useRef, useState } from 'react'
 import { isMobile } from 'react-device-detect'
+import { useSnapshot } from 'valtio'
 
 //refs for View
 const mainView = createRef()
@@ -15,18 +19,28 @@ const PlayScene = dynamic(() => import('@/components/canvas/PlayScene'), { ssr: 
 
 const Play = () => {
   const containerRef = useRef()
+  const [scope, animate] = useAnimate()
 
   const [referenceOpen, setReferenceOpen] = useState(false)
 
+  const levelStore = useSnapshot(levelState)
+  const gameStore = useSnapshot(gameState)
+
   useEffect(() => {
-    console.log(referenceView.current.style)
-  }, [])
+    if (gameStore.points != 0) {
+      animate(scope.current, { opacity: [0, 1, 0], y: [0, 100], scale: [1, 1.2] }, { duration: 1.5 })
+    }
+  }, [gameStore.points])
 
   return (
     <div className='play-container' ref={containerRef}>
       {/* <Navbar></Navbar> */}
 
       <Dropdown />
+
+      <div className='good-answer' ref={scope}>
+        + 1
+      </div>
 
       <Timer />
 
