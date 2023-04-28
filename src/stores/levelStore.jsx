@@ -9,11 +9,11 @@ import { resetTimer } from './timerStore'
 
 //contains arrays of the responses for each level (key)
 const levels = {
-  1: { name: 'Farm', component: Farm, goodAnswers: ['fence', 'boxes'], accomplished: false },
-  2: { name: 'Shoe', component: Shoe, goodAnswers: ['patch', 'laces'], accomplished: false },
+  // 1: { name: 'Farm', component: Farm, goodAnswers: ['fence', 'boxes'], accomplished: false },
+  1: { name: 'Shoe', component: Shoe, goodAnswers: ['patch', 'laces'], accomplished: false },
 }
 
-export const levelState = proxy({ currentLevel: 2, levels: levels })
+export const levelState = proxy({ currentLevel: 1, levels: levels })
 
 export const levelAccomplished = () => {
   const MySwal = withReactContent(Swal)

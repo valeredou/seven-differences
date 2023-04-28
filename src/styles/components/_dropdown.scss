@@ -78,10 +78,16 @@
       }
 
       .text {
-        min-width: 50%;
+        min-width: 45%;
       }
       .value {
         color: #fefefe;
+        &.clickable {
+          cursor: pointer;
+          &:hover {
+            color: darken($color: #fefefe, $amount: 10);
+          }
+        }
       }
     }
 

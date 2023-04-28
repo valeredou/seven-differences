@@ -215,10 +215,16 @@ nav .answers-count {
   padding-bottom: 15px;
 }
 .dropdown-container .content .item .text {
-  min-width: 50%;
+  min-width: 45%;
 }
 .dropdown-container .content .item .value {
   color: #fefefe;
+}
+.dropdown-container .content .item .value.clickable {
+  cursor: pointer;
+}
+.dropdown-container .content .item .value.clickable:hover {
+  color: #e5e5e5;
 }
 .dropdown-container .content .disable-rotation {
   display: flex;
@@ -272,8 +278,47 @@ nav .answers-count {
 @media (max-width: 599px) {
   .timer {
     top: inherit;
-    bottom: 20px;
+    bottom: 60px;
   }
+}
+
+/*****************************************************
+
+                    GENERAL SIZING
+
+*****************************************************/
+.swal-popup-80 {
+  width: 80%;
+}
+
+.swal-popup-50 {
+  width: 50%;
+}
+
+/*****************************************************
+
+                    WELCOME SWAL
+
+*****************************************************/
+.welcome-container-test {
+  background: red;
+  width: 80%;
+}
+
+@media (max-width: 599px) {
+  .welcome-popup {
+    width: 80%;
+  }
+}
+
+.welcome .explanations h1 {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.welcome .explanations h2 {
+  margin-bottom: 20px;
 }
 
 @layer base {
@@ -304,4 +349,8 @@ body {
   opacity: 0;
   font-weight: bold;
   font-size: 2em;
+}
+
+.tour {
+  color: black !important;
 }/*# sourceMappingURL=index.css.map */

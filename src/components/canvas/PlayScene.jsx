@@ -63,7 +63,7 @@ const PlayScene = (props) => {
         </Selection>
         {/* <Box /> */}
         <OrbitControls maxPolarAngle={Math.PI / 2} minDistance={1} maxDistance={10} />
-        <axesHelper />
+        {/* <axesHelper /> */}
         <ContactShadows position={[0, -0.8, 0]} opacity={0.4} blur={1} far={0.8} />
       </View>
       <View index={2} track={props.referenceView}>

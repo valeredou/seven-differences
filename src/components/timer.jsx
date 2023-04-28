@@ -26,9 +26,10 @@ function Timer() {
   return (
     <div
       className='timer'
-      onClick={() => {
-        timerStore.startTimer()
-      }}>
+      // onClick={() => {
+      //   timerStore.startTimer()
+      // }}
+    >
       <UilStopwatch className='stopwatch' />
       <h1> {formatTime(time)}</h1>
     </div>

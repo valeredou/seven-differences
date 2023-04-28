@@ -21,5 +21,6 @@ export const timerStore = proxy({
   resetTimer() {
     timerStore.stopTimer()
     timerStore.time = 0
+    timerStore.startTimer()
   },
 })

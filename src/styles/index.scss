@@ -17,6 +17,7 @@
 @import './components/togglebutton';
 @import './components/loader';
 @import './components/timer';
+@import './components/swal';
 
 @layer base {
   * {
@@ -48,4 +49,8 @@ body {
   opacity: 0;
   font-weight: bold;
   font-size: 2em;
+}
+
+.tour {
+  color: black !important;
 }
