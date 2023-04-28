@@ -48,7 +48,7 @@ const PlayScene = (props) => {
   return (
     <>
       <View track={props.mainView}>
-        <color attach='background' args={[colors.white]} />
+        <color attach='background' args={['#E9F1F7']} />
         <Lights />
         <PerspectiveCamera makeDefault position={[0, 0, 2]} />
         <Selection>
