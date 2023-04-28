@@ -38,9 +38,9 @@ const Dropdown = () => {
             <Lottie animationData={welcome} />
 
             <div className='explanations'>
-              <h1>Welcome to 3Differences!</h1>
-              <h2>As you can guess, i'm a 7 differences game (3 here for the pun), but in 3D.</h2>
-              <h3>Let's see how fast you can get ;)</h3>
+              <h1>{'Welcome to 3Differences!'}</h1>
+              <h2>{"As you can guess, i'm a 7 differences game (3 here for the pun), but in 3D."}</h2>
+              <h3>{"Let's see how fast you can get ;)"}</h3>
             </div>
           </div>
         ),
